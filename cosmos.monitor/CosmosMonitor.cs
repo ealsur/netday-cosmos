@@ -23,7 +23,7 @@ namespace cosmos.monitor
         }
 
         [FunctionName("CosmosMonitor")]
-        public async Task Run([TimerTrigger("0 */5 * * * *")]TimerInfo timerInfo,
+        public async Task Run([TimerTrigger("*/30 * * * * *")]TimerInfo timerInfo,
             [CosmosDB(
             databaseName: "%DATABASE%",
             containerName: "%EVENTCONTAINER%",
@@ -37,7 +37,7 @@ namespace cosmos.monitor
                 var response = await estimator.ReadNextAsync();
                 foreach (var item in response)
                 {
-                    log.LogMetric($"Lease {item.LeaseToken}", item.EstimatedLag, new Dictionary<string, object>() { { "Owner", item.InstanceName } });
+                    log.LogMetric($"Estimatio Lease {item.LeaseToken}", item.EstimatedLag);
                 }
             }
         }
