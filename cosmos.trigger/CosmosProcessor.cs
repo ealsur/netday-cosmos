@@ -49,7 +49,7 @@ namespace cosmos.trigger
         {
             public string DeviceId { get; set; }
 
-            public string Value { get; set; }
+            public double Value { get; set; }
         }
 
         public class Summary
@@ -60,7 +60,7 @@ namespace cosmos.trigger
 
             public string Time { get; set; }
 
-            public string MaxValue { get; set; }
+            public double MaxValue { get; set; }
         }
     }
 }
