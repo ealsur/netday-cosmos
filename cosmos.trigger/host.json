@@ -1,0 +1,14 @@
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+                "isEnabled": false,
+                "excludedTypes": "Request"
+            }
+        },
+        "logLevel": {
+            "Host.Triggers.CosmosDB": "Debug"
+        }
+    }
+}
