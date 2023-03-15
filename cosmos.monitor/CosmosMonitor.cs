@@ -16,13 +16,14 @@ namespace cosmos.monitor
         /// </summary>
         private ChangeFeedEstimator GetOrCreateEstimator(CosmosClient cosmosClient)
         {
-            this.estimator ??= cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), Environment.GetEnvironmentVariable("EVENTCONTAINER")).GetChangeFeedEstimator("EventProcessor", cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), "leases"));
+            this.estimator ??= cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), Environment.GetEnvironmentVariable("EVENTCONTAINER"))
+                .GetChangeFeedEstimator("EventProcessor", cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), "leases"));
 
             return this.estimator;
         }
 
         [FunctionName("CosmosMonitor")]
-        public async Task Run([TimerTrigger("0 */5 * * * *")]TimerInfo _,
+        public async Task Run([TimerTrigger("0 */5 * * * *")]TimerInfo timerInfo,
             [CosmosDB(
             databaseName: "%DATABASE%",
             containerName: "%EVENTCONTAINER%",
