@@ -37,7 +37,7 @@ namespace cosmos.monitor
                 var response = await estimator.ReadNextAsync();
                 foreach (var item in response)
                 {
-                    log.LogMetric($"Estimatio Lease {item.LeaseToken}", item.EstimatedLag);
+                    log.LogMetric($"Estimation Lease {item.LeaseToken}", item.EstimatedLag, new Dictionary<string, object>() { { "Lease", item.LeaseToken } });
                 }
             }
         }
