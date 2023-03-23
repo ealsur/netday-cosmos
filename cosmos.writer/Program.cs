@@ -1,9 +1,10 @@
 ﻿using CommandLine;
 using Microsoft.Azure.Cosmos;
 
-Parser.Default.ParseArguments<Options>(Environment.GetCommandLineArgs())
-    .WithParsed<Options>(async o =>
+await Parser.Default.ParseArguments<Options>(Environment.GetCommandLineArgs())
+    .WithParsedAsync<Options>(async o =>
     {
+
         using CosmosClient client = new(o.ConnectionString);
         using SemaphoreSlim concurrencySemaphore = new(o.ConcurrentWrites);
         using CancellationTokenSource cts = new(o.RunTimeAsTimespan);
@@ -22,7 +23,14 @@ Parser.Default.ParseArguments<Options>(Environment.GetCommandLineArgs())
         List<Task> operations = new List<Task>();
         while (!cts.IsCancellationRequested)
         {
-            await concurrencySemaphore.WaitAsync(cts.Token);
+            try
+            {
+                await concurrencySemaphore.WaitAsync(cts.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                break;
+            }
 
             string deviceId = devices[random.Next(0, devices.Count - 1)];
 
@@ -54,7 +62,7 @@ Parser.Default.ParseArguments<Options>(Environment.GetCommandLineArgs())
 class DeviceTelemetry
 {
     public string id { get; set; }
-    
+
     public string DeviceId { get; set; }
 
     public double Value { get; set; }
