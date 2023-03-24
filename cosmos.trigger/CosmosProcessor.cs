@@ -10,7 +10,7 @@ namespace cosmos.trigger
     public static class CosmosProcessor
     {
         // Support for retries
-        [FixedDelayRetry(3, "00:00:10")]
+        [FixedDelayRetry(3, "00:00:05")]
         [FunctionName("CosmosProcessor")]
         public static async Task Run(
             // Trigger to react to events
@@ -33,6 +33,11 @@ namespace cosmos.trigger
         {
             foreach (var group in events.GroupBy(singleEvent => singleEvent.DeviceId))
             {
+                if (group.Key.Equals("youshallnotpass", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new Exception("You shall not pass!");
+                }
+                
                 log.LogInformation($"Generating summary for device {group.Key}...");
                 await summary.AddAsync(new Summary()
                 {
