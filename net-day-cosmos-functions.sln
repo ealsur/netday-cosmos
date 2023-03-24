@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cosmos.trigger", "cosmos.trigger\cosmos.trigger.csproj", "{C02956F9-8998-4362-B9C1-CF9214F2C591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cosmos.trigger", "cosmos.trigger\cosmos.trigger.csproj", "{C02956F9-8998-4362-B9C1-CF9214F2C591}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cosmos.monitor", "cosmos.monitor\cosmos.monitor.csproj", "{DDE4BA35-65DC-4635-9C7F-E2F66890DDE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cosmos.monitor", "cosmos.monitor\cosmos.monitor.csproj", "{DDE4BA35-65DC-4635-9C7F-E2F66890DDE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cosmos.writer", "cosmos.writer\cosmos.writer.csproj", "{513E6D09-F727-4F05-9DAA-8A6BCE9ECA50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DDE4BA35-65DC-4635-9C7F-E2F66890DDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE4BA35-65DC-4635-9C7F-E2F66890DDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE4BA35-65DC-4635-9C7F-E2F66890DDE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513E6D09-F727-4F05-9DAA-8A6BCE9ECA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513E6D09-F727-4F05-9DAA-8A6BCE9ECA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513E6D09-F727-4F05-9DAA-8A6BCE9ECA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513E6D09-F727-4F05-9DAA-8A6BCE9ECA50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
