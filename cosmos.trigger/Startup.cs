@@ -11,6 +11,7 @@ namespace cosmos.trigger
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
+            // Customize Cosmos DB serializer
             builder.Services.AddSingleton<ICosmosDBSerializerFactory, MyCosmosDBSerializerFactory>();
         }
     }

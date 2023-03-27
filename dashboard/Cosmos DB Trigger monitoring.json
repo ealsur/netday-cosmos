@@ -55,7 +55,7 @@
                 },
                 {
                   "name": "Query",
-                  "value": "customMetrics\n| where name startswith \"Estimation Lease\"\n| extend Owner = tostring(customDimensions.prop__Owner)\n| project timestamp, Owner, value\n",
+                  "value": "customMetrics\n| where name startswith \"Estimation Lease\"\n| extend Owner = tostring(customDimensions.prop__Owner)\n| project timestamp, Owner, value\n| summarize sum(value) by Owner, bin(timestamp,30s)\n",
                   "isOptional": true
                 },
                 {
@@ -118,8 +118,28 @@
               "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
               "settings": {
                 "content": {
+                  "Query": "customMetrics\n| where name startswith \"Estimation Lease\"\n| extend Owner = tostring(customDimensions.prop__Owner)\n| project timestamp, Owner, value\n| summarize sum(value) by Owner, bin(timestamp,30s)\n",
                   "PartTitle": "Estimated lag",
-                  "PartSubTitle": "By Instance"
+                  "PartSubTitle": "By Instance",
+                  "Dimensions": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "sum_value",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Owner",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
                 }
               }
             }
@@ -294,7 +314,7 @@
                 },
                 {
                   "name": "Query",
-                  "value": "customMetrics\n| where name startswith \"Estimation Lease\"\n| extend Lease = tostring(customDimensions.prop__Lease)\n| project timestamp, Lease, value\n",
+                  "value": "customMetrics\n| where name startswith \"Estimation Lease\"\n| extend Lease = tostring(customDimensions.prop__Lease)\n| project timestamp, Lease, value\n| summarize sum(value) by Lease, bin(timestamp,30s)\n",
                   "isOptional": true
                 },
                 {
@@ -357,8 +377,28 @@
               "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
               "settings": {
                 "content": {
+                  "Query": "customMetrics\n| where name startswith \"Estimation Lease\"\n| extend Lease = tostring(customDimensions.prop__Lease)\n| project timestamp, Lease, value\n| summarize sum(value) by Lease, bin(timestamp,30s)\n",
                   "PartTitle": "Estimated lag",
-                  "PartSubTitle": "By lease"
+                  "PartSubTitle": "By lease",
+                  "Dimensions": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "sum_value",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Lease",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
                 }
               }
             }
@@ -393,9 +433,9 @@
                 "value": "Past hour"
               },
               "filteredPartIds": [
-                "StartboardPart-LogsDashboardPart-b08554e1-cab9-409d-9600-e5c2e8d8547a",
                 "StartboardPart-LogsDashboardPart-b08554e1-cab9-409d-9600-e5c2e8d854ac",
-                "StartboardPart-LogsDashboardPart-b08554e1-cab9-409d-9600-e5c2e8d85376"
+                "StartboardPart-LogsDashboardPart-b08554e1-cab9-409d-9600-e5c2e8d85376",
+                "StartboardPart-LogsDashboardPart-b08554e1-cab9-409d-9600-e5c2e8d8547a"
               ]
             }
           }

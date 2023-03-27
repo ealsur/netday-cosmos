@@ -36,7 +36,7 @@ namespace cosmos.trigger
         public override Stream ToStream<T>(T input)
         {
             MemoryStream streamPayload = new MemoryStream();
-            this.systemTextJsonSerializer.Serialize(streamPayload, input, typeof(T), default);
+            this.systemTextJsonSerializer.Serialize(streamPayload, input, input.GetType(), default);
             streamPayload.Position = 0;
             return streamPayload;
         }
