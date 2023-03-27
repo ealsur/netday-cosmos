@@ -16,8 +16,9 @@ namespace cosmos.monitor
         /// </summary>
         private ChangeFeedEstimator GetOrCreateEstimator(CosmosClient cosmosClient)
         {
+            var leaseContainer = cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), "leases");
             this.estimator ??= cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), Environment.GetEnvironmentVariable("EVENTCONTAINER"))
-                .GetChangeFeedEstimator("EventProcessor", cosmosClient.GetContainer(Environment.GetEnvironmentVariable("DATABASE"), "leases"));
+                .GetChangeFeedEstimator("EventProcessor", leaseContainer);
 
             return this.estimator;
         }

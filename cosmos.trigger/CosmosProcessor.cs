@@ -27,6 +27,7 @@ namespace cosmos.trigger
             [CosmosDB(
             databaseName: "%DATABASE%",
             containerName: "%SUMMARYCONTAINER%",
+            PreferredLocations = "%REGION%",
             Connection = "cosmosConnection")]IAsyncCollector<Summary> summary,
 
             ILogger log)
