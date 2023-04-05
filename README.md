@@ -66,7 +66,7 @@ The `concurrency` parameter can be customized to increase or decrease the volume
 
 ## Importing dashboard
 
-This repository contains a [sample dashboard](./Cosmos DB Trigger monitoring.json) that can be imported on Application Insights to visualize the estimated lag on the monitored container. Before importing the dashboard, you must update the Resource Ids:
+This repository contains a [sample dashboard](./Cosmos_DB_Trigger_monitoring.json) that can be imported on Application Insights to visualize the estimated lag on the monitored container. Before importing the dashboard, you must update the Resource Ids:
 
 `"/subscriptions/{your-subscription-id}/resourceGroups/{resource-group}/providers/microsoft.insights/components/{appinsights-name}"`
 
