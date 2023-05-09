@@ -1,6 +1,8 @@
 # Azure Cosmos DB + Azure Functions: Estimating pending lag - Azure Dev .NET Days
 
-<TBD recording>
+Watch the recording! 👇
+
+[![Watch the presentation](http://img.youtube.com/vi/obeL_xz6oIs/0.jpg)](http://www.youtube.com/watch?v=obeL_xz6oIs "NET Day")
 
 ## Description
 
